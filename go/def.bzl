@@ -55,6 +55,10 @@ load(
     _go_source = "go_source",
 )
 load(
+    "@io_bazel_rules_go//go/private:rules/gopackagesdriver_aspects.bzl",
+    _gopackagesdriver_files_aspect = "gopackagesdriver_files_aspect",
+)
+load(
     "@io_bazel_rules_go//extras:embed_data.bzl",
     _go_embed_data = "go_embed_data",
 )
@@ -122,6 +126,9 @@ go_rule = _go_rule
 
 # See go/core.rst#go_path for full documentation.
 go_path = _go_path
+
+gopackagesdriver_files = _gopackagesdriver_files_aspect
+""" FIXME write docs """
 
 def go_vet_test(*args, **kwargs):
     fail("The go_vet_test rule has been removed. Please migrate to nogo instead, which supports vet tests.")
