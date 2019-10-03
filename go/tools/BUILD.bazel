@@ -6,6 +6,8 @@ filegroup(
         "//go/tools/builders:all_files",
         "//go/tools/coverdata:all_files",
         "//go/tools/testwrapper:all_files",
+        "//go/tools/gopackagesdriver:all_files",
+        "//go/tools/gopackagesdriver-nonshim:all_files",
     ],
     visibility = ["//visibility:public"],
 )
