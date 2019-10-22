@@ -27,7 +27,6 @@ import (
 	"fmt"
 	"io"
 	"io/ioutil"
-	"log"
 	"os"
 	"os/exec"
 	"os/signal"
@@ -125,7 +124,7 @@ func TestMain(m *testing.M, args Args) {
 
 	flag.Parse()
 
-	workspaceDir, cleanup, err := setupWorkspace(args)
+	workspaceDir, cleanup, err := setupWorkspace(args, files)
 	defer func() {
 		if err := cleanup(); err != nil {
 			fmt.Fprintf(os.Stderr, "cleanup error: %v\n", err)
@@ -232,7 +231,7 @@ func (e *StderrExitError) Error() string {
 	return sb.String()
 }
 
-func setupWorkspace(args Args) (dir string, cleanup func() error, err error) {
+func setupWorkspace(args Args, files []string) (dir string, cleanup func() error, err error) {
 	var cleanups []func() error
 	cleanup = func() error {
 		var firstErr error
@@ -352,8 +351,6 @@ func setupWorkspace(args Args) (dir string, cleanup func() error, err error) {
 			return "", cleanup, err
 		}
 	}
-
-	log.Println("FIXME outBaseDir:", outBaseDir, "; mainDir:", mainDir)
 
 	// If there's no WORKSPACE file, create one.
 	workspacePath := filepath.Join(mainDir, "WORKSPACE")
