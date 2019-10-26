@@ -104,6 +104,11 @@ def go_rules_dependencies():
         shallow_since = "1582107762 -0800",
     )
 
+    # native.local_repository(
+    # # hrm branch, plox
+    #     name = "org_golang_x_tools",
+    #     path = "/Users/jmhodges/src/golang.org/x/tools",
+    # )
     # Proto dependencies
     # These are limited as much as possible. In most cases, users need to
     # declare these on their own (probably via go_repository rules generated
