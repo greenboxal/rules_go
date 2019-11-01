@@ -31,7 +31,7 @@ load(
     "cc_library",
 )
 
-def cgo_configure(go, srcs, cdeps, cppopts, copts, cxxopts, clinkopts):
+def cgo_configure(go, srcs, cgo_output, cdeps, cppopts, copts, cxxopts, clinkopts):
     """cgo_configure returns the inputs and compile / link options
     that are required to build a cgo archive.
 
@@ -161,6 +161,7 @@ def cgo_configure(go, srcs, cdeps, cppopts, copts, cxxopts, clinkopts):
 
     return struct(
         inputs = inputs,
+        output = cgo_output,
         deps = deps,
         runfiles = runfiles,
         cppopts = cppopts,
